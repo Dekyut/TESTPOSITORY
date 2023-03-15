@@ -62,13 +62,9 @@ class EnrollmentSystem {
 
     try {
       FileReader input = new FileReader("courses.txt");
-
-      // Reads characters
       input.read(array);
       System.out.println("These are the available courses: ");
       System.out.println(array);
-
-      // Closes the reader
       input.close();
     }
 
@@ -186,6 +182,44 @@ class EnrollmentSystem {
 
     public static void registerStudent() throws Exception {
         System.out.println("Register as Student");
+        System.out.println("1. View Registered Students");
+        System.out.println("2. Register New Students");
+        System.out.println("What do you want to do?");
+        int choice = Integer.parseInt(reader.readLine());
+
+        switch (choice) {
+            case 1:
+                viewregisteredStudent();
+                break;
+            case 2:
+                addregisteredStudent();
+                break;
+            default:
+                System.out.println("Invalid choice. Please try again.");
+        }
+        
+    }
+    public static void viewregisteredStudent() throws Exception {
+        System.out.println("Registered Students:");
+        char[] array = new char[100];
+
+    try {
+      FileReader input = new FileReader("students.txt");
+
+      input.read(array);
+      System.out.println(array);
+
+      input.close();
+    }
+
+    catch(Exception e) {
+      e.getStackTrace();
+    }
+    }
+
+
+        public static void addregisteredStudent() throws Exception {
+    
         System.out.print("Enter your name: ");
         String name = reader.readLine();
         System.out.print("Enter your username: ");
@@ -202,6 +236,44 @@ class EnrollmentSystem {
 
     public static void registerAdmin() throws Exception {
         System.out.println("Register as Admin/Faculty");
+        System.out.println("1. View Registered Admins");
+        System.out.println("2. Register New Admins");
+        System.out.println("What do you want to do?");
+        int choice = Integer.parseInt(reader.readLine());
+
+        switch (choice) {
+            case 1:
+                viewregisteredAdmin();
+                break;
+            case 2:
+                addregisteredAdmin();
+                break;
+            default:
+                System.out.println("Invalid choice. Please try again.");
+        }
+        
+    }
+
+    public static void viewregisteredAdmin() throws Exception {
+        System.out.println("Registered Admins:");
+        char[] array = new char[100];
+
+    try {
+      FileReader input = new FileReader("admins.txt");
+      input.read(array);
+      System.out.println(array);
+      input.close();
+    }
+
+    catch(Exception e) {
+      e.getStackTrace();
+    }
+
+
+
+    }
+
+    public static void addregisteredAdmin() throws Exception {
         System.out.print("Enter your name: ");
         String name = reader.readLine();
         System.out.print("Enter your username: ");
